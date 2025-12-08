@@ -1,0 +1,44 @@
+name: iOS TestFlight
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Flutter packages
+        run: flutter pub get
+
+      - name: Import codesigning certificates
+        uses: apple-actions/import-codesign-certs@v2
+        with:
+          p12-file-base64: ${{ secrets.APPLE_P12_CERT }}
+          p12-password: ${{ secrets.APPLE_P12_PASSWORD }}
+          mobileprovision-file-base64: ${{ secrets.APPLE_MOBILEPROVISION }}
+
+      - name: Build IPA (App Store)
+        run: flutter build ipa --release --export-options-plist=ios/exportOptions-appstore.plist
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Install fastlane
+        run: gem install fastlane
+
+      - name: Write App Store Connect API key
+        run: |
+          echo '${{ secrets.APP_STORE_CONNECT_API_KEY_JSON }}' > appstore_api_key.json
+
+      - name: Upload to TestFlight
+        run: fastlane pilot upload --ipa "build/ios/ipa/Runner.ipa" --api_key_path appstore_api_key.json --skip_submission --skip_waiting_for_build_processing
+      - name: Run tests
+        run: dart test
