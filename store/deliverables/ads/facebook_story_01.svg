@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00BCD4"/>
+      <stop offset="100%" stop-color="#4DD0E1"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#bg)"/>
+
+  <!-- Top branding bar -->
+  <g transform="translate(60,100)">
+    <rect x="0" y="0" width="960" height="120" rx="22" fill="#121212"/>
+    <text x="40" y="78" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="64" font-weight="700">Equal</text>
+    <text x="340" y="78" fill="#B0B0B0" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Social, simplified</text>
+  </g>
+
+  <!-- Photo/Video grid preview -->
+  <g transform="translate(60,300)">
+    <rect x="0" y="0" width="960" height="980" rx="28" fill="#0E0E0E" stroke="#333"/>
+    <!-- Placeholder tiles -->
+    <rect x="40" y="40" width="280" height="280" rx="16" fill="#222"/>
+    <rect x="360" y="40" width="280" height="280" rx="16" fill="#222"/>
+    <rect x="680" y="40" width="240" height="280" rx="16" fill="#222"/>
+
+    <rect x="40" y="360" width="280" height="280" rx="16" fill="#222"/>
+    <rect x="360" y="360" width="600" height="280" rx="16" fill="#222"/>
+
+    <rect x="40" y="680" width="420" height="260" rx="16" fill="#222"/>
+    <rect x="500" y="680" width="460" height="260" rx="16" fill="#222"/>
+
+    <!-- Labels -->
+    <text x="520" y="520" text-anchor="middle" fill="#808080" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Insert app visuals</text>
+  </g>
+
+  <!-- Value prop + CTA -->
+  <g transform="translate(60,1360)">
+    <text x="0" y="0" fill="#FFFFFF" font-size="52" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Create. Connect. Equal.</text>
+    <text x="0" y="64" fill="#B0B0B0" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Share moments, message friends, start calls, and explore.</text>
+  </g>
+
+  <g transform="translate(60,1500)">
+    <rect x="0" y="0" width="960" height="120" rx="24" fill="url(#cta)"/>
+    <text x="480" y="76" text-anchor="middle" fill="#000" font-size="40" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Get Equal</text>
+  </g>
+
+  <!-- Store badges placeholders -->
+  <g transform="translate(60,1820)">
+    <rect x="0" y="-40" width="280" height="60" rx="12" fill="#222" stroke="#333"/>
+    <text x="140" y="0" text-anchor="middle" fill="#FFFFFF" font-size="24" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">App Store</text>
+    <rect x="320" y="-40" width="280" height="60" rx="12" fill="#222" stroke="#333"/>
+    <text x="460" y="0" text-anchor="middle" fill="#FFFFFF" font-size="24" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Google Play</text>
+  </g>
+</svg>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#1976D2"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="40" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="1080" height="1920" fill="url(#bgGrad)"/>
+
+  <!-- Accent shapes -->
+  <circle cx="200" cy="280" r="180" fill="#00BCD4" opacity="0.18" filter="url(#softGlow)"/>
+  <circle cx="980" cy="1540" r="220" fill="#2196F3" opacity="0.15" filter="url(#softGlow)"/>
+
+  <!-- Header / Logo -->
+  <g transform="translate(60,120)">
+    <rect x="0" y="0" width="960" height="140" rx="24" fill="#121212" opacity="0.75"/>
+    <text x="36" y="90" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="72" font-weight="700">Equal</text>
+    <text x="320" y="90" fill="#B0B0B0" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28">Create • Connect • Share</text>
+  </g>
+
+  <!-- Phone mockup using existing template -->
+  <!-- Note: This references an existing SVG template in your repo. Open the file in a vector editor to replace with live screenshots. -->
+  <g transform="translate(110,340)">
+    <rect x="0" y="0" width="860" height="1280" rx="48" fill="#0E0E0E" stroke="#333333" stroke-width="2"/>
+    <text x="430" y="640" text-anchor="middle" fill="#808080" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28">Insert app screenshot here</text>
+    <!-- Optional external reference to phone frame template -->
+    <!-- <image href="../../screenshots/templates/phone_frame.svg" x="-40" y="-60" width="940" height="1400" opacity="0.35"/> -->
+  </g>
+
+  <!-- Value props -->
+  <g transform="translate(60,1680)">
+    <text x="0" y="0" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="700">Create. Connect. Equal.</text>
+    <text x="0" y="56" fill="#B0B0B0" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28">Social reimagined with posts, messaging, calls, and AI tools.</text>
+  </g>
+
+  <!-- CTA Bar -->
+  <g transform="translate(60,1500)">
+    <rect x="0" y="0" width="960" height="120" rx="24" fill="url(#accentGrad)"/>
+    <text x="480" y="76" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="40" font-weight="700">Download now</text>
+  </g>
+
+  <!-- Footer badges (placeholders) -->
+  <g transform="translate(60,1820)">
+    <rect x="0" y="-40" width="280" height="60" rx="12" fill="#222" stroke="#333"/>
+    <text x="140" y="0" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="24">App Store</text>
+    <rect x="320" y="-40" width="280" height="60" rx="12" fill="#222" stroke="#333"/>
+    <text x="460" y="0" text-anchor="middle" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="24">Google Play</text>
+  </g>
+</svg>

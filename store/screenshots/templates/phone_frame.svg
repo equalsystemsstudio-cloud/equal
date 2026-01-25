@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <title>Phone Device Frame Template</title>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <clipPath id="contentClip">
+      <rect x="60" y="120" width="960" height="1680" rx="24" ry="24"/>
+    </clipPath>
+  </defs>
+  <!-- Outer background -->
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <!-- Phone body -->
+  <rect x="40" y="80" width="1000" height="1760" rx="80" ry="80" fill="#111827" stroke="#1f2937" stroke-width="8"/>
+  <!-- Notch -->
+  <rect x="490" y="100" width="100" height="24" rx="12" fill="#374151"/>
+  <!-- Screen area (content goes inside clip) -->
+  <rect x="60" y="120" width="960" height="1680" rx="24" ry="24" fill="#000"/>
+  <g clip-path="url(#contentClip)">
+    <!-- Placeholder content area to be replaced with real screenshot -->
+    <rect x="60" y="120" width="960" height="1680" fill="#111"/>
+    <text x="540" y="1060" font-size="42" fill="#ffffff" text-anchor="middle">PLACEHOLDER — insert app screenshot here</text>
+  </g>
+  <!-- Caption bar -->
+  <rect x="60" y="1660" width="960" height="140" rx="24" fill="#111827" opacity="0.9"/>
+  <text x="90" y="1718" font-size="48" fill="#ffffff" font-weight="bold">Equal</text>
+  <text x="90" y="1770" font-size="36" fill="#d1d5db">Caption: describe the screen highlight here</text>
+  <!-- Safe margins guide -->
+  <rect x="80" y="140" width="920" height="1640" rx="24" fill="none" stroke="#10b981" stroke-dasharray="12 10" stroke-width="3" opacity="0.5"/>
+  <!-- Instructions -->
+  <text x="540" y="70" font-size="28" fill="#ffffff" text-anchor="middle" opacity="0.9">Phone frame template (1080x1920). Paste screenshot inside the clip path.</text>
+</svg>

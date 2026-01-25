@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "656478782739",
+    "project_id": "equal-push-notifications",
+    "storage_bucket": "equal-push-notifications.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656478782739:android:0f6462187949e2f58306e6",
+        "android_client_info": {
+          "package_name": "com.equal.app.equal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfQ-M7V2keSg08OkjZTX61dsdCnYVXpTY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <title>Equal Screenshot — Create (Phone)</title>
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <clipPath id="contentClip">
+      <rect x="60" y="120" width="960" height="1680" rx="24" ry="24"/>
+    </clipPath>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bgGrad)"/>
+  <rect x="40" y="80" width="1000" height="1760" rx="80" ry="80" fill="#111827" stroke="#1f2937" stroke-width="8"/>
+  <rect x="490" y="100" width="100" height="24" rx="12" fill="#374151"/>
+  <rect x="60" y="120" width="960" height="1680" rx="24" ry="24" fill="#000"/>
+  <g clip-path="url(#contentClip)">
+    <rect x="60" y="120" width="960" height="1680" fill="#111"/>
+    <text x="540" y="1060" font-size="42" fill="#ffffff" text-anchor="middle">Insert Create Post screenshot here</text>
+  </g>
+  <rect x="60" y="1660" width="960" height="140" rx="24" fill="#111827" opacity="0.9"/>
+  <text x="90" y="1718" font-size="48" fill="#ffffff" font-weight="bold">Equal — Create</text>
+  <text x="90" y="1770" font-size="36" fill="#d1d5db">Capture, edit, and post photos and videos in seconds.</text>
+</svg>

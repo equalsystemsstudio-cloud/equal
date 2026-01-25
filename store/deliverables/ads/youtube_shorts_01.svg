@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#090909"/>
+      <stop offset="100%" stop-color="#141414"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="60" y="140" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="72" font-weight="800">Equal</text>
+  <text x="60" y="200" fill="#B0B0B0" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28">Create • Connect • Share</text>
+
+  <!-- Feature list -->
+  <g transform="translate(60,280)" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+    <text x="0" y="0" font-size="44" font-weight="700">What you get:</text>
+    <text x="0" y="70" font-size="34">• Beautiful feed and posts</text>
+    <text x="0" y="130" font-size="34">• Fast messaging and calling</text>
+    <text x="0" y="190" font-size="34">• Discover creators and trends</text>
+    <text x="0" y="250" font-size="34">• AI tools for creativity</text>
+  </g>
+
+  <!-- Screenshot placeholder -->
+  <g transform="translate(60,560)">
+    <rect x="0" y="0" width="960" height="1060" rx="28" fill="#0E0E0E" stroke="#333"/>
+    <text x="480" y="530" text-anchor="middle" fill="#808080" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Insert app screenshot</text>
+  </g>
+
+  <!-- CTA -->
+  <g transform="translate(60,1660)">
+    <rect x="0" y="0" width="960" height="120" rx="24" fill="#2196F3"/>
+    <text x="480" y="76" text-anchor="middle" fill="#FFFFFF" font-size="40" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Download Equal</text>
+  </g>
+</svg>

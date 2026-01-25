@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e1318"/>
+      <stop offset="1" stop-color="#0a0d10"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a2129"/>
+      <stop offset="1" stop-color="#141a20"/>
+    </linearGradient>
+  </defs>
+  <rect x="60" y="60" rx="72" width="960" height="1800" fill="url(#bg)" stroke="#1d232b" stroke-width="6"/>
+  <g transform="translate(100,160)">
+    <rect width="880" height="1600" rx="28" fill="#0f1419"/>
+    <!-- Header -->
+    <rect x="0" y="0" width="880" height="96" rx="24" fill="#131a21"/>
+    <text x="440" y="62" text-anchor="middle" fill="#e8eef5" font-size="36" font-weight="600">Discover</text>
+    <!-- Search bar -->
+    <rect x="24" y="120" width="832" height="64" rx="16" fill="#141a20" stroke="#232a33"/>
+    <text x="48" y="160" fill="#8fa0b3" font-size="24">Search creators, posts...</text>
+    <!-- Grid cards -->
+    <g transform="translate(24,220)">
+      <rect width="400" height="400" rx="24" fill="url(#card)" stroke="#232a33"/>
+      <text x="200" y="210" text-anchor="middle" fill="#cfd7e3" font-size="28">Trending</text>
+    </g>
+    <g transform="translate(456,220)">
+      <rect width="400" height="400" rx="24" fill="url(#card)" stroke="#232a33"/>
+      <text x="200" y="210" text-anchor="middle" fill="#cfd7e3" font-size="28">Rising</text>
+    </g>
+    <g transform="translate(24,648)">
+      <rect width="400" height="400" rx="24" fill="url(#card)" stroke="#232a33"/>
+      <text x="200" y="210" text-anchor="middle" fill="#cfd7e3" font-size="28">Creators</text>
+    </g>
+    <g transform="translate(456,648)">
+      <rect width="400" height="400" rx="24" fill="url(#card)" stroke="#232a33"/>
+      <text x="200" y="210" text-anchor="middle" fill="#cfd7e3" font-size="28">Topics</text>
+    </g>
+    <!-- Bottom nav -->
+    <g transform="translate(0,1515)">
+      <rect x="0" y="0" width="880" height="85" rx="24" fill="#121820" stroke="#202732"/>
+      <circle cx="92" cy="42" r="22" fill="#2a313a"/>
+      <circle cx="264" cy="42" r="22" fill="#3a99ff"/>
+      <rect x="410" y="22" width="60" height="40" rx="10" fill="#2a313a"/>
+      <circle cx="616" cy="42" r="22" fill="#2a313a"/>
+      <circle cx="788" cy="42" r="22" fill="#2a313a"/>
+    </g>
+  </g>
+</svg>

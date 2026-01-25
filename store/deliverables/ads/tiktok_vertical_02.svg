@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#131313"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FF4081"/>
+      <stop offset="100%" stop-color="#F50057"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <!-- Hero text -->
+  <text x="60" y="160" fill="#FFFFFF" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="84" font-weight="900">Equal</text>
+  <text x="60" y="220" fill="#B0B0B0" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="28">Your social—equal, creative, connected.</text>
+
+  <!-- Three-step showcase -->
+  <g transform="translate(60,300)">
+    <g>
+      <rect x="0" y="0" width="960" height="420" rx="28" fill="#0E0E0E" stroke="#333"/>
+      <text x="40" y="80" fill="#FFFFFF" font-size="44" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">1. Share beautiful posts</text>
+      <text x="40" y="140" fill="#B0B0B0" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Photos, videos, and more</text>
+      <rect x="620" y="40" width="300" height="340" rx="16" fill="#222"/>
+    </g>
+    <g transform="translate(0,460)">
+      <rect x="0" y="0" width="960" height="420" rx="28" fill="#0E0E0E" stroke="#333"/>
+      <text x="40" y="80" fill="#FFFFFF" font-size="44" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">2. Message & call friends</text>
+      <text x="40" y="140" fill="#B0B0B0" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Fast, private, and secure</text>
+      <rect x="620" y="40" width="300" height="340" rx="16" fill="#222"/>
+    </g>
+    <g transform="translate(0,920)">
+      <rect x="0" y="0" width="960" height="420" rx="28" fill="#0E0E0E" stroke="#333"/>
+      <text x="40" y="80" fill="#FFFFFF" font-size="44" font-weight="800" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">3. Discover creators</text>
+      <text x="40" y="140" fill="#B0B0B0" font-size="28" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Trending topics and people</text>
+      <rect x="620" y="40" width="300" height="340" rx="16" fill="#222"/>
+    </g>
+  </g>
+
+  <!-- CTA bar -->
+  <g transform="translate(60,1680)">
+    <rect x="0" y="0" width="960" height="140" rx="28" fill="url(#accent)"/>
+    <text x="480" y="88" text-anchor="middle" fill="#FFFFFF" font-size="44" font-weight="900" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">Try Equal now</text>
+  </g>
+</svg>

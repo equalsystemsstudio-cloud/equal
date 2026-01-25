@@ -1,0 +1,50 @@
+App Title: Equal
+
+Short Description (<=80 chars):
+Create, connect, and share photos, videos, and live streams.
+
+Full Description (draft):
+Equal is a modern social app where everyone can create and connect on equal terms. Share photos and videos, chat with friends, make voice and video calls, and go live. Powerful creation tools and a privacy‑first design help you express yourself and stay in control.
+
+Key features:
+• Photo & video creation: capture, edit, and post in seconds.
+• Messaging: fast, reliable 1:1 and group chats.
+• Calls: high‑quality voice and video calls.
+• Live: host and join live streams.
+• Discovery: find new creators and communities.
+• Profiles: customize your profile and showcase your work.
+• Privacy by design: clear controls for permissions and data.
+
+Why Equal:
+• Simple, fast, and fun.
+• Built for creators and communities.
+• Designed to protect your data and give you control.
+
+Contact & Policy:
+• Website: https://equalapp.vercel.app
+• Contact email: support@equal-co.com
+• Privacy Policy: https://equal-privacy.vercel.app/privacy-policy
+
+Category: Social
+Content rating: Teen (suggested)
+Target audience: 13+
+
+Store Graphics (prepared/available):
+• Feature Graphic (1024x500, SVG source): assets/images/store_feature_graphic.svg
+• App Icon (SVG source): assets/images/app_icon.svg (export to 512x512 PNG for Play)
+• Screenshots: please confirm target devices; we’ll capture 6–8 screenshots highlighting Home/Feed, Create Post, Messaging, Calls, Live, Profile, Settings.
+
+Release notes template (What’s New):
+• New: improved creation workflow and faster uploads.
+• Fixes: performance and reliability improvements.
+• Misc: UI polish and minor bug fixes.
+
+Optional (if available):
+• Promo video (YouTube URL): <add later>
+• External links: Community, Help Center.
+
+To finalize:
+1) Confirm developer name (e.g., “Equal Systems Studio”) and country/region.
+2) Confirm age rating and any sensitive content disclaimers.
+3) Approve the copy above or provide edits.
+4) I will export PNG assets in required sizes and deliver a ready‑to‑upload bundle.

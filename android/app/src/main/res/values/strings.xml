@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Equal</string>
+    <string name="app_description">Revolutionary Social Media App where everyone is a star</string>
+    <string name="app_version">1.0.0</string>
+    <string name="developer_name">Equal Team</string>
+    <string name="privacy_policy_url">https://equal-app.com/privacy</string>
+    <string name="terms_of_service_url">https://equal-app.com/terms</string>
+    <string name="support_email">support@equal-co.com</string>
+</resources>
