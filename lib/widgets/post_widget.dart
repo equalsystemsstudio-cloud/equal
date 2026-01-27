@@ -309,6 +309,14 @@ class _PostWidgetState extends State<PostWidget>
     _pauseVideo();
     _pauseAudio();
     _endViewTracking();
+
+    // Explicitly pause players when pushing next screen
+    if (_videoController != null && _videoController!.value.isPlaying) {
+      _videoController!.pause();
+    }
+    if (_audioPlayer != null && _isAudioPlaying) {
+      _audioPlayer!.pause();
+    }
   }
 
   @override
@@ -573,6 +581,14 @@ class _PostWidgetState extends State<PostWidget>
     _avatarRotationController.dispose();
     // Ensure we end view tracking before disposing
     _endViewTracking();
+
+    // Explicitly pause players on dispose
+    try {
+      _videoController?.pause();
+      _audioPlayer?.pause();
+      _parentVideoController?.pause();
+    } catch (_) {}
+
     // Cancel any pending timers/listeners
     _videoInitDebounceTimer?.cancel();
     _audioSeekTimer?.cancel();
