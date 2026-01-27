@@ -967,6 +967,10 @@ class LocalizationService {
       'failed_take_photo': 'Failed to take photo. Please try again.',
       'camera_not_available_web_use_gallery':
           'Camera not available on web. Please use gallery instead.',
+      'camera_functionality_not_supported_on_web':
+          'Camera functionality not supported on web',
+      'video_functionality_not_supported_on_web':
+          'Video recording is not supported on web',
       'storage_permission_denied': 'Storage permission denied.',
       'failed_read_audio_file': 'Failed to read audio file.',
       'failed_select_audio': 'Failed to select audio',
@@ -1929,6 +1933,10 @@ class LocalizationService {
       'birthday_description':
           'Necesitamos tu cumpleaños para asegurarnos de que eres elegible para usar Equal. Esto no se mostrará públicamente.',
       'next': 'Siguiente',
+      'camera_functionality_not_supported_on_web':
+          'Funcionalidad de cámara no compatible en web',
+      'video_functionality_not_supported_on_web':
+          'La grabación de video no es compatible en la web',
     },
     'fr': {
       'forgot_password_title': 'Mot de passe oublié ?',
@@ -2785,6 +2793,10 @@ class LocalizationService {
       'birthday_description':
           'Nous avons besoin de votre date de naissance pour confirmer votre éligibilité à utiliser Equal. Cela ne sera pas affiché publiquement.',
       'next': 'Suivant',
+      'camera_functionality_not_supported_on_web':
+          'Fonctionnalité caméra non prise en charge sur le web',
+      'video_functionality_not_supported_on_web':
+          'L\'enregistrement vidéo n\'est pas pris en charge sur le web',
     },
     'de': {
       'forgot_password_title': 'Passwort vergessen?',
@@ -3640,6 +3652,10 @@ class LocalizationService {
       'birthday_description':
           'Wir benötigen dein Geburtsdatum, um sicherzustellen, dass du Equal nutzen darfst. Dies wird nicht öffentlich angezeigt.',
       'next': 'Weiter',
+      'camera_functionality_not_supported_on_web':
+          'Kamerafunktion im Web nicht unterstützt',
+      'video_functionality_not_supported_on_web':
+          'Videoaufnahme im Web nicht unterstützt',
     },
     'zh': {
       'forgot_password_title': '忘记密码？',
@@ -3785,6 +3801,7 @@ class LocalizationService {
       'no_photo_to_publish': '没有可发布的照片',
       'camera_not_available': '摄像头不可用',
       'camera_functionality_not_supported_on_web': '网页端不支持相机功能。\n请使用手机应用进行拍照。',
+      'video_functionality_not_supported_on_web': '网页端不支持视频录制功能',
       'original': '原始',
       'play_original': '播放原版',
       'playing_original': '正在播放原版',
@@ -5133,8 +5150,10 @@ class LocalizationService {
       'age_restriction_title': '年齢制限',
       'age_restriction_message': 'アカウントを作成するには13歳以上である必要があります。',
       'when_is_your_birthday': '誕生日はいつですか？',
-      'birthday_description': 'Equalを利用する資格があることを確認するために誕生日が必要です。これは公開されません。',
+      'birthday_description': 'Equalを使用する資格があることを確認するために、誕生日が必要です。これは公開されません。',
       'next': '次へ',
+      'camera_functionality_not_supported_on_web': 'ウェブではカメラ機能はサポートされていません',
+      'video_functionality_not_supported_on_web': 'ウェブではビデオ録画はサポートされていません',
     },
     'ar': {
       'forgot_password_title': 'هل نسيت كلمة المرور؟',
@@ -5907,6 +5926,10 @@ class LocalizationService {
       'birthday_description':
           'نحتاج إلى تاريخ ميلادك للتأكد من أهليتك لاستخدام Equal. لن يتم عرض هذا علنًا.',
       'next': 'التالي',
+      'camera_functionality_not_supported_on_web':
+          'وظيفة الكاميرا غير مدعومة على الويب',
+      'video_functionality_not_supported_on_web':
+          'تسجيل الفيديو غير مدعوم على الويب',
     },
     'it': {
       'forgot_password_title': 'Password dimenticata?',
@@ -6079,6 +6102,8 @@ class LocalizationService {
       'camera_not_available': 'Fotocamera non disponibile',
       'camera_functionality_not_supported_on_web':
           'La funzionalità della fotocamera non è supportata sul web.\nUsa l’app mobile per scattare foto.',
+      'video_functionality_not_supported_on_web':
+          'La registrazione video non è supportata sul web',
       'original': 'Originale',
       'play_original': 'Riproduci originale',
       'playing_original': 'Riproduzione dell\'originale',
@@ -7453,6 +7478,10 @@ class LocalizationService {
       'birthday_description':
           'Precisamos da sua data de nascimento para garantir que você é elegível para usar o Equal. Isso não será mostrado publicamente.',
       'next': 'Próximo',
+      'camera_functionality_not_supported_on_web':
+          'Funcionalidade de câmera não suportada na web',
+      'video_functionality_not_supported_on_web':
+          'Gravação de vídeo não suportada na web',
     },
     'ru': {
       'forgot_password_title': 'Забыли пароль?',
@@ -7626,6 +7655,8 @@ class LocalizationService {
       'camera_not_available': 'Камера недоступна',
       'camera_functionality_not_supported_on_web':
           'Функция камеры не поддерживается в веб-версии.\nПожалуйста, используйте мобильное приложение для съемки.',
+      'video_functionality_not_supported_on_web':
+          'Запись видео не поддерживается в веб-версии',
       'original': 'Оригинал',
       'play_original': 'Воспроизвести оригинал',
       'playing_original': 'Воспроизведение оригинала',
@@ -8762,6 +8793,9 @@ class LocalizationService {
       'warmth': '색온도',
       'vignette': '비네팅',
       'camera_not_available': '카메라를 사용할 수 없습니다',
+      'camera_functionality_not_supported_on_web':
+          '웹에서는 카메라 기능이 지원되지 않습니다.\n사진을 촬영하려면 모바일 앱을 사용하세요.',
+      'video_functionality_not_supported_on_web': '웹에서는 동영상 녹화가 지원되지 않습니다',
       'initializing_camera': '카메라 초기화 중...',
       'hashtags_hint': '#해시태그 (공백으로 구분)',
       'photos_permission_permanently_denied_enable_in_settings':
@@ -9099,6 +9133,8 @@ class LocalizationService {
       'camera_not_available': 'कैमरा उपलब्ध नहीं है',
       'camera_functionality_not_supported_on_web':
           'वेब पर कैमरा सुविधा समर्थित नहीं है।\nफोटो कैप्चर के लिए मोबाइल ऐप का उपयोग करें।',
+      'video_functionality_not_supported_on_web':
+          'वेब पर वीडियो रिकॉर्डिंग समर्थित नहीं है',
       'original': 'मूल',
       'play_original': 'मूल चलाएँ',
       'playing_original': 'मूल चल रहा है',
@@ -9925,6 +9961,8 @@ class LocalizationService {
       'camera_not_available': 'Kamera kullanılamıyor',
       'camera_functionality_not_supported_on_web':
           'Web’de kamera özelliği desteklenmiyor.\nFotoğraf çekmek için mobil uygulamayı kullanın.',
+      'video_functionality_not_supported_on_web':
+          'Web\'de video kaydı desteklenmiyor',
       'original': 'Orijinal',
       'play_original': 'Orijinali oynat',
       'playing_original': 'Orijinal oynatılıyor',
@@ -10722,6 +10760,8 @@ class LocalizationService {
       'camera_not_available': 'Camera niet beschikbaar',
       'camera_functionality_not_supported_on_web':
           'Camerafunctie wordt niet ondersteund op het web.\nGebruik de mobiele app om foto’s te maken.',
+      'video_functionality_not_supported_on_web':
+          'Video-opname wordt niet ondersteund op het web',
       'original': 'Origineel',
       'play_original': 'Origineel afspelen',
       'playing_original': 'Origineel wordt afgespeeld',

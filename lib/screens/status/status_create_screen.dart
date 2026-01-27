@@ -467,6 +467,20 @@ class _StatusCreateScreenState extends State<StatusCreateScreen>
   }
 
   Future<void> _takePhoto() async {
+    if (kIsWeb) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: LocalizedText('camera_functionality_not_supported_on_web'),
+          backgroundColor: Colors.orange,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      );
+      return;
+    }
+
     try {
       if (!kIsWeb) {
         final camStatus = await Permission.camera.status;
@@ -586,8 +600,15 @@ class _StatusCreateScreenState extends State<StatusCreateScreen>
   Future<void> _recordVideo() async {
     if (kIsWeb) {
       // Recording via camera is not supported on web for ImagePicker
-      _showErrorSnackBar(
-        'Video recording is not supported on web. Please use Gallery instead.',
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: LocalizedText('video_functionality_not_supported_on_web'),
+          backgroundColor: Colors.orange,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
       );
       return;
     }

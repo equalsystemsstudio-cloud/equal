@@ -178,12 +178,26 @@ class _ProfileScreenState extends State<ProfileScreen>
       final results = await Future.wait([
         _postsService.getUserPosts(userId: _userProfile!['id'], limit: 50),
         _contentService.getLikedPosts(_userProfile!['id'], limit: 50),
+        _postsService.getUserPostCount(_userProfile!['id']),
       ]);
 
       final posts = results[0] as List<PostModel>;
       final likedMaps = (results[1] as List)
           .whereType<Map<String, dynamic>>()
           .toList();
+      final postCount = results[2] as int;
+
+      // Update DB if count mismatch for own profile
+      if (_isOwnProfile &&
+          _userProfile != null &&
+          (_userProfile!['posts_count'] ?? 0) != postCount) {
+        SupabaseConfig.client
+            .from('users')
+            .update({'posts_count': postCount})
+            .eq('id', _userProfile!['id'])
+            .then((_) => debugPrint('Synced post count to DB'))
+            .catchError((e) => debugPrint('Failed to sync post count: $e'));
+      }
 
       final likedPosts = likedMaps.map((m) {
         final users = m['users'] as Map<String, dynamic>?;
@@ -210,6 +224,9 @@ class _ProfileScreenState extends State<ProfileScreen>
       if (mounted) {
         setState(() {
           _posts = posts;
+          if (_userProfile != null) {
+            _userProfile!['posts_count'] = postCount;
+          }
           _likedPosts
             ..clear()
             ..addAll(likedPosts);

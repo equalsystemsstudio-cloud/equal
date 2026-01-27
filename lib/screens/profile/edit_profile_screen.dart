@@ -250,9 +250,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       // Camera not supported on web
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: LocalizedText('camera_not_available_web_use_gallery'),
-            backgroundColor: AppColors.error,
+          SnackBar(
+            content: LocalizedText('camera_functionality_not_supported_on_web'),
+            backgroundColor: Colors.orange,
           ),
         );
       }

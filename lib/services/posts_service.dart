@@ -2027,6 +2027,41 @@ class PostsService {
     }
   }
 
+  // Get user post count
+  Future<int> getUserPostCount(String userId) async {
+    try {
+      final currentUserId = _authService.currentUser?.id;
+
+      // Determine if viewer can see private posts
+      bool canSeePrivate = false;
+      if (currentUserId != null) {
+        if (currentUserId == userId) {
+          canSeePrivate = true;
+        } else {
+          final followingIds = await _getFollowingIds(currentUserId);
+          canSeePrivate = followingIds.contains(userId);
+        }
+      }
+
+      var query = _client
+          .from(SupabaseConfig.postsTable)
+          .select('id')
+          .eq('user_id', userId);
+
+      if (!canSeePrivate) {
+        query = query.eq('is_public', true);
+      }
+
+      final response = await query.count(CountOption.exact);
+      return response.count;
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Error getting user post count: $e');
+      }
+      return 0;
+    }
+  }
+
   // Update media_url and/or thumbnail_url for a post
   Future<PostModel?> updatePostMediaFields({
     required String postId,

@@ -1045,100 +1045,12 @@ class _CreatePostScreenState extends State<CreatePostScreen>
 
   Future<void> _startRecording() async {
     if (kIsWeb) {
-      try {
-        await _rtcRenderer.initialize();
-
-        final baseConstraints = {'audio': true, 'video': true};
-        debugPrint(
-          'Web recording: baseConstraints=${jsonEncode(baseConstraints)}',
-        );
-
-        try {
-          try {
-            _webStream?.getTracks().forEach((t) {
-              t.stop();
-            });
-          } catch (_) {}
-          _webStream = null;
-          _webStream = await webGetUserMedia(baseConstraints);
-          await webAttachRenderer(_rtcRenderer, _webStream!);
-          _webRecorderSession = await webStartRecordingAsync(
-            _webStream,
-            timesliceMs: 1000,
-          );
-          debugPrint(
-            'Recorder started (shared preview stream). mime=${_webRecorderSession?.mime} timeslice=1000',
-          );
-        } catch (e2) {
-          try {
-            _webStream?.getTracks().forEach((t) {
-              t.stop();
-            });
-          } catch (_) {}
-          _webStream = null;
-          _webRecorderSession = await webStartRecordingAsync(
-            null,
-            timesliceMs: 1000,
-            constraints: baseConstraints,
-          );
-          await webAttachRenderer(_rtcRenderer, _webRecorderSession?.stream);
-          try {
-            debugPrint(
-              'Recorder started (fresh html stream). mime=${_webRecorderSession?.mime} timeslice=1000 tracks v=${_webRecorderSession?.stream?.getVideoTracks().length ?? 0} a=${_webRecorderSession?.stream?.getAudioTracks().length ?? 0}',
-            );
-          } catch (_) {}
-        }
-
-        if (mounted) {
-          setState(() {
-            _isRecording = true;
-            _recordingProgress = 0.0;
-          });
-        }
-        // Cancel any previous recording timer subscription
-        try {
-          await _recordingTimerSub?.cancel();
-        } catch (_) {}
-        _recordingTimerSub = null;
-        _startRecordingTimer();
-        await _analytics.trackEvent(
-          'web_recording_started',
-          properties: {
-            'hasPreviewStream': (_webStream != null).toString(),
-            'previewVideoTracks': (_webStream?.getVideoTracks().length ?? 0)
-                .toString(),
-            'previewAudioTracks': (_webStream?.getAudioTracks().length ?? 0)
-                .toString(),
-            'hasRecorderSession': (_webRecorderSession != null).toString(),
-          },
-        );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: LocalizedText('local_recording_started')),
-        );
-      } catch (e, st) {
-        await _analytics.trackError(
-          'web_start_recording_failed',
-          e.toString(),
-          stackTrace: st.toString(),
-          context: {
-            'hasPreviewStream': (_webStream != null).toString(),
-            'previewVideoTracks': (_webStream?.getVideoTracks().length ?? 0)
-                .toString(),
-            'previewAudioTracks': (_webStream?.getAudioTracks().length ?? 0)
-                .toString(),
-            'hasRecorderSession': (_webRecorderSession != null).toString(),
-          },
-        );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: LocalizedText(
-              LocalizationService.t('failed_to_start_recording') +
-                  ': ${e.toString()}',
-            ),
-            backgroundColor: Colors.red,
-          ),
-        );
-      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: LocalizedText('video_functionality_not_supported_on_web'),
+          backgroundColor: Colors.orange,
+        ),
+      );
       return;
     }
 
