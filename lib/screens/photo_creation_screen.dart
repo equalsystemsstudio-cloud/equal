@@ -1347,14 +1347,14 @@ class _PhotoCreationScreenState extends State<PhotoCreationScreen>
                       onTap: _showAdjustmentPanel,
                     ),
                     const SizedBox(height: 20),
-                    // Stickers
-                    _buildSideButton(
-                      icon: Icons.emoji_emotions,
-                      label: 'stickers',
-                      isActive: _showStickers,
-                      onTap: _showStickerPanel,
-                    ),
-                    const SizedBox(height: 20),
+                    // Stickers (Hidden per request)
+                    // _buildSideButton(
+                    //   icon: Icons.emoji_emotions,
+                    //   label: 'stickers',
+                    //   isActive: _showStickers,
+                    //   onTap: _showStickerPanel,
+                    // ),
+                    // if (_showStickers) const SizedBox(height: 20),
                     // Import from Device
                     _buildSideButton(
                       icon: Icons.photo_library,
