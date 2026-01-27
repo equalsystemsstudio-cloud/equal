@@ -297,7 +297,7 @@ class _MainFeedScreenState extends State<MainFeedScreen>
 
       // Demo mode: if no posts fetched, populate with sample posts
       if (FeatureFlags.screenshotDemoMode && posts.isEmpty) {
-        posts = _buildDemoPosts();
+        // posts = _buildDemoPosts();
       }
 
       // Only update state if the widget is still mounted
@@ -311,17 +311,17 @@ class _MainFeedScreenState extends State<MainFeedScreen>
     } catch (e) {
       // Demo mode fallback on errors
       if (FeatureFlags.screenshotDemoMode) {
-        final demoPosts = _buildDemoPosts();
-        if (mounted) {
-          setState(() {
-            _posts = demoPosts;
-            _isLoading = false;
-            _hasError = false;
-            _errorMessage = '';
-            _hasMorePosts = false;
-          });
-        }
-        return;
+        // final demoPosts = _buildDemoPosts();
+        // if (mounted) {
+        //   setState(() {
+        //     _posts = demoPosts;
+        //     _isLoading = false;
+        //     _hasError = false;
+        //     _errorMessage = '';
+        //     _hasMorePosts = false;
+        //   });
+        // }
+        // return;
       }
       // Only update error state if still mounted
       if (mounted) {
@@ -1630,126 +1630,4 @@ class _MainFeedScreenState extends State<MainFeedScreen>
 
 double? lerpDouble(double a, double b, double t) {
   return a + (b - a) * t;
-}
-
-// Build sample posts for screenshot/demo mode
-List<PostModel> _buildDemoPosts() {
-  final now = DateTime.now();
-  return [
-    PostModel(
-      id: 'demo-1',
-      userId: 'u1',
-      username: 'aurora',
-      displayName: 'Aurora',
-      userAvatar: 'https://placehold.co/64x64?text=A',
-      content: 'Sunrise over the mountains',
-      mediaUrl: 'https://placehold.co/720x1280?text=Sunrise',
-      thumbnailUrl: 'https://placehold.co/360x640?text=Sunrise+Thumb',
-      mediaType: MediaType.image,
-      likes: 1240,
-      comments: 86,
-      shares: 32,
-      views: 5500,
-      saves: 210,
-      isLiked: false,
-      timestamp: now.subtract(const Duration(hours: 3)),
-      hashtags: ['#nature', '#sunrise'],
-      isVerified: true,
-    ),
-    PostModel(
-      id: 'demo-2',
-      userId: 'u2',
-      username: 'chefmax',
-      displayName: 'Chef Max',
-      userAvatar: 'https://placehold.co/64x64?text=C',
-      content: 'Weekend brunch ideas',
-      mediaUrl: 'https://placehold.co/720x1280?text=Brunch',
-      thumbnailUrl: 'https://placehold.co/360x640?text=Brunch+Thumb',
-      mediaType: MediaType.image,
-      likes: 892,
-      comments: 44,
-      shares: 18,
-      views: 3200,
-      saves: 150,
-      isLiked: true,
-      timestamp: now.subtract(const Duration(hours: 7)),
-      hashtags: ['#food', '#brunch'],
-    ),
-    PostModel(
-      id: 'demo-3',
-      userId: 'u3',
-      username: 'travelersoul',
-      displayName: 'Traveler Soul',
-      userAvatar: 'https://placehold.co/64x64?text=T',
-      content: 'City lights at night',
-      mediaUrl: 'https://placehold.co/720x1280?text=City+Lights',
-      thumbnailUrl: 'https://placehold.co/360x640?text=City+Lights+Thumb',
-      mediaType: MediaType.image,
-      likes: 1520,
-      comments: 120,
-      shares: 60,
-      views: 7800,
-      saves: 340,
-      isLiked: false,
-      timestamp: now.subtract(const Duration(days: 1, hours: 2)),
-      hashtags: ['#city', '#night'],
-    ),
-    PostModel(
-      id: 'demo-4',
-      userId: 'u4',
-      username: 'coderly',
-      displayName: 'Coderly',
-      userAvatar: 'https://placehold.co/64x64?text=K',
-      content: 'Dark mode UI concept',
-      mediaUrl: 'https://placehold.co/720x1280?text=Dark+Mode+UI',
-      thumbnailUrl: 'https://placehold.co/360x640?text=Dark+Mode+Thumb',
-      mediaType: MediaType.image,
-      likes: 640,
-      comments: 28,
-      shares: 14,
-      views: 2100,
-      saves: 98,
-      isLiked: false,
-      timestamp: now.subtract(const Duration(days: 2, hours: 5)),
-      hashtags: ['#design', '#ux'],
-    ),
-    PostModel(
-      id: 'demo-5',
-      userId: 'u5',
-      username: 'fitjane',
-      displayName: 'Fit Jane',
-      userAvatar: 'https://placehold.co/64x64?text=F',
-      content: 'Morning workout routine',
-      mediaUrl: 'https://placehold.co/720x1280?text=Workout',
-      thumbnailUrl: 'https://placehold.co/360x640?text=Workout+Thumb',
-      mediaType: MediaType.image,
-      likes: 430,
-      comments: 36,
-      shares: 22,
-      views: 1800,
-      saves: 120,
-      isLiked: true,
-      timestamp: now.subtract(const Duration(days: 3)),
-      hashtags: ['#fitness', '#health'],
-    ),
-    PostModel(
-      id: 'demo-6',
-      userId: 'u6',
-      username: 'bookhaven',
-      displayName: 'Book Haven',
-      userAvatar: 'https://placehold.co/64x64?text=B',
-      content: 'Cozy reading corner',
-      mediaUrl: 'https://placehold.co/720x1280?text=Reading+Corner',
-      thumbnailUrl: 'https://placehold.co/360x640?text=Reading+Thumb',
-      mediaType: MediaType.image,
-      likes: 210,
-      comments: 12,
-      shares: 8,
-      views: 900,
-      saves: 40,
-      isLiked: false,
-      timestamp: now.subtract(const Duration(days: 4, hours: 8)),
-      hashtags: ['#books', '#cozy'],
-    ),
-  ];
 }

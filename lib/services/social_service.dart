@@ -1241,7 +1241,7 @@ class SocialService {
     }
   }
 
-  Future<List<Map<String, dynamic>>> getSuggestedUsers() async {
+  Future<List<Map<String, dynamic>>> getSuggestedUsers({int limit = 10}) async {
     try {
       final currentUser = _supabase.auth.currentUser;
       if (currentUser == null) throw Exception('User not authenticated');
@@ -1253,7 +1253,7 @@ class SocialService {
           ) // Fixed: use display_name instead of full_name
           .neq('id', currentUser.id)
           .order('followers_count', ascending: false)
-          .limit(10);
+          .limit(limit);
 
       final users = List<Map<String, dynamic>>.from(response);
 

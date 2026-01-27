@@ -82,6 +82,12 @@
 -keep class io.flutter.plugins.pathprovider.** { *; }
 -dontwarn io.flutter.plugins.pathprovider.**
 
+# Keep video_player plugin and ExoPlayer
+-keep class io.flutter.plugins.videoplayer.** { *; }
+-dontwarn io.flutter.plugins.videoplayer.**
+-keep class com.google.android.exoplayer2.** { *; }
+-dontwarn com.google.android.exoplayer2.**
+
 # Suppress optional Play Core (deprecated) references from Flutter engine's deferred components
 -dontwarn com.google.android.play.core.**
 -dontwarn com.google.android.play.core.tasks.**

@@ -16,7 +16,7 @@ class FeatureFlags {
   static const bool showSafeModeToggle = false;
 
   /// Enable screenshot/demo mode (bypass auth and prompts where possible)
-  static const bool screenshotDemoMode = true;
+  static const bool screenshotDemoMode = false;
 
   /// When demo mode is enabled, preselect an initial tab index for screenshots.
   /// Tabs: 0=Home/Feed, 1=Discover, 2=Create, 3=Activity, 4=Profile

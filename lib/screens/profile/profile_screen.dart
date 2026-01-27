@@ -26,8 +26,9 @@ import 'package:flutter/foundation.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String? userId;
+  final Map<String, dynamic>? initialUserProfile;
 
-  const ProfileScreen({super.key, this.userId});
+  const ProfileScreen({super.key, this.userId, this.initialUserProfile});
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -46,6 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   bool _isOwnProfile = false;
   bool _isFollowing = false;
   bool _hasBlockedUser = false;
+  bool _isLoadingChat = false;
   bool _isLoadingPosts = false;
 
   List<PostModel> _posts = [];
@@ -64,6 +66,12 @@ class _ProfileScreenState extends State<ProfileScreen>
     _tabController.addListener(_onTabChanged);
     _isOwnProfile =
         widget.userId == null || widget.userId == _authService.currentUser?.id;
+
+    if (widget.initialUserProfile != null) {
+      _userProfile = widget.initialUserProfile;
+      _isLoading = false;
+    }
+
     _loadUserProfile();
   }
 
@@ -376,10 +384,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         leading: _isOwnProfile
             ? null
             : IconButton(
-                icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: AppColors.textPrimary,
-                ),
+                icon: Icon(Icons.arrow_back_ios, color: AppColors.textPrimary),
                 onPressed: () => Navigator.pop(context),
               ),
         title: Text(
@@ -392,10 +397,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         actions: [
           if (_isOwnProfile)
             IconButton(
-              icon: Icon(
-                Icons.bar_chart_rounded,
-                color: AppColors.textPrimary,
-              ),
+              icon: Icon(Icons.bar_chart_rounded, color: AppColors.textPrimary),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -444,12 +446,10 @@ class _ProfileScreenState extends State<ProfileScreen>
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         gradient: AppColors.primaryGradient,
-                        border: Border.all(
-                          color: AppColors.primary,
-                          width: 3,
-                        ),
+                        border: Border.all(color: AppColors.primary, width: 3),
                       ),
-                      child: _userProfile!['avatar_url'] != null &&
+                      child:
+                          _userProfile!['avatar_url'] != null &&
                               _userProfile!['avatar_url'].isNotEmpty
                           ? ClipOval(
                               child: Image.network(
@@ -531,7 +531,8 @@ class _ProfileScreenState extends State<ProfileScreen>
                             const SizedBox(width: 4),
                             Icon(
                               Icons.verified,
-                              color: (((_userProfile!['username']
+                              color:
+                                  (((_userProfile!['username']
                                           ?.toString()
                                           .toLowerCase()) ==
                                       'vigny')
@@ -622,21 +623,27 @@ class _ProfileScreenState extends State<ProfileScreen>
                         decoration: BoxDecoration(
                           color: AppColors.surface,
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: AppColors.border,
-                            width: 1,
-                          ),
+                          border: Border.all(color: AppColors.border, width: 1),
                         ),
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.message,
-                            color: AppColors.textPrimary,
-                            size: 20,
-                          ),
-                          onPressed: () {
-                            _navigateToChat();
-                          },
-                        ),
+                        child: _isLoadingChat
+                            ? const Center(
+                                child: SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                    color: AppColors.textPrimary,
+                                  ),
+                                ),
+                              )
+                            : IconButton(
+                                icon: Icon(
+                                  Icons.message,
+                                  color: AppColors.textPrimary,
+                                  size: 20,
+                                ),
+                                onPressed: _navigateToChat,
+                              ),
                       ),
                     ],
                   ],
@@ -677,10 +684,22 @@ class _ProfileScreenState extends State<ProfileScreen>
                   labelStyle: const TextStyle(fontSize: 12),
                   unselectedLabelStyle: const TextStyle(fontSize: 12),
                   tabs: [
-                    Tab(icon: const Icon(Icons.grid_on), text: LocalizationService.t('posts')),
-                    Tab(icon: const Icon(Icons.favorite_border), text: LocalizationService.t('liked')),
-                    Tab(icon: const Icon(Icons.videocam), text: LocalizationService.t('streams')),
-                    Tab(icon: const Icon(Icons.call_split), text: LocalizationService.t('harmonies')),
+                    Tab(
+                      icon: const Icon(Icons.grid_on),
+                      text: LocalizationService.t('posts'),
+                    ),
+                    Tab(
+                      icon: const Icon(Icons.favorite_border),
+                      text: LocalizationService.t('liked'),
+                    ),
+                    Tab(
+                      icon: const Icon(Icons.videocam),
+                      text: LocalizationService.t('streams'),
+                    ),
+                    Tab(
+                      icon: const Icon(Icons.call_split),
+                      text: LocalizationService.t('harmonies'),
+                    ),
                   ],
                 ),
               ),
@@ -798,7 +817,8 @@ class _ProfileScreenState extends State<ProfileScreen>
               ),
             );
           },
-          onLongPress: (_isOwnProfile && (post.userId == _authService.currentUser?.id))
+          onLongPress:
+              (_isOwnProfile && (post.userId == _authService.currentUser?.id))
               ? () => _showPostOptions(post, index)
               : null,
           child: Container(
@@ -1099,7 +1119,10 @@ class _ProfileScreenState extends State<ProfileScreen>
             const SizedBox(height: 20),
             if (post.userId == _authService.currentUser?.id) ...[
               ListTile(
-                leading: Icon(Icons.edit_outlined, color: AppColors.textPrimary),
+                leading: Icon(
+                  Icons.edit_outlined,
+                  color: AppColors.textPrimary,
+                ),
                 title: Text(
                   'Edit post',
                   style: TextStyle(color: AppColors.textPrimary),
@@ -1174,7 +1197,9 @@ class _ProfileScreenState extends State<ProfileScreen>
 
         // Remove post from all relevant local lists
         setState(() {
-          if (index >= 0 && index < _posts.length && _posts[index].id == post.id) {
+          if (index >= 0 &&
+              index < _posts.length &&
+              _posts[index].id == post.id) {
             _posts.removeAt(index);
           } else {
             _posts.removeWhere((p) => p.id == post.id);
@@ -1189,9 +1214,12 @@ class _ProfileScreenState extends State<ProfileScreen>
             if (raw is int) {
               currentCount = raw;
             } else {
-              currentCount = int.tryParse(raw?.toString() ?? '') ?? _posts.length;
+              currentCount =
+                  int.tryParse(raw?.toString() ?? '') ?? _posts.length;
             }
-            _userProfile!['posts_count'] = (currentCount > 0) ? currentCount - 1 : 0;
+            _userProfile!['posts_count'] = (currentCount > 0)
+                ? currentCount - 1
+                : 0;
           }
         });
 
@@ -1252,7 +1280,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                 labelText: LocalizationService.t('caption'),
                 labelStyle: TextStyle(color: AppColors.textSecondary),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.textSecondary.withOpacity(0.3)),
+                  borderSide: BorderSide(
+                    color: AppColors.textSecondary.withOpacity(0.3),
+                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -1271,7 +1301,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                 labelStyle: TextStyle(color: AppColors.textSecondary),
                 hintStyle: TextStyle(color: AppColors.textSecondary),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.textSecondary.withOpacity(0.3)),
+                  borderSide: BorderSide(
+                    color: AppColors.textSecondary.withOpacity(0.3),
+                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
@@ -1399,7 +1431,9 @@ class _ProfileScreenState extends State<ProfileScreen>
 
   void _applyPostUpdateLocally(PostModel newPost, int index) {
     setState(() {
-      if (index >= 0 && index < _posts.length && _posts[index].id == newPost.id) {
+      if (index >= 0 &&
+          index < _posts.length &&
+          _posts[index].id == newPost.id) {
         _posts[index] = newPost;
       } else {
         final i = _posts.indexWhere((p) => p.id == newPost.id);
@@ -2102,7 +2136,9 @@ class _ProfileScreenState extends State<ProfileScreen>
                               ),
                               const SizedBox(height: 6),
                               Text(
-                                LocalizationService.t('no_streams_available_yet'),
+                                LocalizationService.t(
+                                  'no_streams_available_yet',
+                                ),
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: AppColors.textSecondary,

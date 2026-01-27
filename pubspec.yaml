@@ -1,7 +1,7 @@
 name: equal
 description: "Equal - Revolutionary Social Media App where everyone is a star"
 publish_to: 'none'
-version: 1.0.2+5
+version: 1.0.3+7
 
 environment:
   sdk: ^3.8.1

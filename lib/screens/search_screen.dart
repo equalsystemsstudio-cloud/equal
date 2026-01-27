@@ -20,6 +20,7 @@ import '../services/auth_service.dart';
 import '../services/enhanced_notification_service.dart';
 import '../services/post_media_optimization_service.dart';
 import 'profile/profile_screen.dart';
+import 'user_list_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -388,7 +389,8 @@ class _SearchScreenState extends State<SearchScreen>
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfileScreen(userId: userId),
+                  builder: (context) =>
+                      ProfileScreen(userId: userId, initialUserProfile: user),
                 ),
               );
               try {
@@ -701,7 +703,16 @@ class _SearchScreenState extends State<SearchScreen>
               ),
               TextButton(
                 onPressed: () {
-                  // Show all suggested users
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => UserListScreen(
+                        title: LocalizationService.t('suggested_for_you'),
+                        userId: AuthService().currentUser?.id ?? '',
+                        type: UserListType.suggested,
+                      ),
+                    ),
+                  );
                 },
                 child: Text(
                   LocalizationService.t('see_all'),
@@ -745,7 +756,8 @@ class _SearchScreenState extends State<SearchScreen>
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProfileScreen(userId: userId),
+              builder: (context) =>
+                  ProfileScreen(userId: userId, initialUserProfile: user),
             ),
           );
           try {

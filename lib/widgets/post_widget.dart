@@ -2173,32 +2173,6 @@ class _PostWidgetState extends State<PostWidget>
                           ),
                         ),
                 ),
-                const SizedBox(height: 6),
-                if ((widget.post.hashtags?.any(
-                      (h) =>
-                          h.toLowerCase().replaceAll('#', '') ==
-                          'mock-experiment',
-                    ) ??
-                    false)) ...{
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 2,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFEF6C00),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Text(
-                      'Mock-Experiment',
-                      style: GoogleFonts.poppins(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                },
               ],
             ),
             const SizedBox(width: 12),

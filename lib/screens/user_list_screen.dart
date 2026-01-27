@@ -5,6 +5,7 @@ import '../services/social_service.dart';
 import '../services/auth_service.dart';
 import '../widgets/user_card.dart';
 import '../services/localization_service.dart';
+import 'profile/profile_screen.dart';
 
 class UserListScreen extends StatefulWidget {
   final String title;
@@ -22,29 +23,24 @@ class UserListScreen extends StatefulWidget {
   State<UserListScreen> createState() => _UserListScreenState();
 }
 
-enum UserListType {
-  followers,
-  following,
-  likes,
-  shares,
-}
+enum UserListType { followers, following, likes, shares, suggested }
 
 class _UserListScreenState extends State<UserListScreen>
     with TickerProviderStateMixin {
   final _socialService = SocialService();
   final _authService = AuthService();
   final _searchController = TextEditingController();
-  
+
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
-  
+
   List<Map<String, dynamic>> _users = [];
   List<Map<String, dynamic>> _filteredUsers = [];
   Map<String, dynamic>? _currentUser;
   bool _isLoading = false;
   bool _isSearching = false;
   // ignore: unused_field
-String _searchQuery = '';
+  String _searchQuery = '';
 
   @override
   void initState() {
@@ -53,18 +49,14 @@ String _searchQuery = '';
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _fadeAnimation = Tween<double>(
-      begin: 0.0,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    ));
-    
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
+    );
+
     _loadCurrentUser();
     _loadUsers();
     _animationController.forward();
-    
+
     _searchController.addListener(_onSearchChanged);
   }
 
@@ -93,7 +85,7 @@ String _searchQuery = '';
 
     try {
       List<Map<String, dynamic>> users = [];
-      
+
       switch (widget.type) {
         case UserListType.followers:
           users = await _socialService.getFollowers(widget.userId);
@@ -107,8 +99,11 @@ String _searchQuery = '';
         case UserListType.shares:
           users = await _socialService.getPostShares(widget.userId);
           break;
+        case UserListType.suggested:
+          users = await _socialService.getSuggestedUsers(limit: 50);
+          break;
       }
-      
+
       setState(() {
         _users = users;
         _filteredUsers = users;
@@ -127,7 +122,7 @@ String _searchQuery = '';
     setState(() {
       _searchQuery = query;
       _isSearching = query.isNotEmpty;
-      
+
       if (query.isEmpty) {
         _filteredUsers = _users;
       } else {
@@ -135,10 +130,10 @@ String _searchQuery = '';
           final username = (user['username'] ?? '').toLowerCase();
           final displayName = (user['display_name'] ?? '').toLowerCase();
           final bio = (user['bio'] ?? '').toLowerCase();
-          
+
           return username.contains(query) ||
-                 displayName.contains(query) ||
-                 bio.contains(query);
+              displayName.contains(query) ||
+              bio.contains(query);
         }).toList();
       }
     });
@@ -160,9 +155,7 @@ String _searchQuery = '';
             children: [
               _buildHeader(),
               _buildSearchBar(),
-              Expanded(
-                child: _buildUsersList(),
-              ),
+              Expanded(child: _buildUsersList()),
             ],
           ),
         ),
@@ -175,21 +168,13 @@ String _searchQuery = '';
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: AppColors.surface,
-        border: Border(
-          bottom: BorderSide(
-            color: AppColors.border,
-            width: 1,
-          ),
-        ),
+        border: Border(bottom: BorderSide(color: AppColors.border, width: 1)),
       ),
       child: Row(
         children: [
           IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: Icon(
-              Icons.arrow_back,
-              color: AppColors.textPrimary,
-            ),
+            icon: Icon(Icons.arrow_back, color: AppColors.textPrimary),
           ),
           const SizedBox(width: 8),
           Expanded(
@@ -217,10 +202,7 @@ String _searchQuery = '';
           ),
           IconButton(
             onPressed: _refreshUsers,
-            icon: Icon(
-              Icons.refresh,
-              color: AppColors.textSecondary,
-            ),
+            icon: Icon(Icons.refresh, color: AppColors.textSecondary),
           ),
         ],
       ),
@@ -234,36 +216,23 @@ String _searchQuery = '';
         controller: _searchController,
         decoration: InputDecoration(
           hintText: 'Search users...',
-          hintStyle: TextStyle(
-            color: AppColors.textSecondary,
-          ),
-          prefixIcon: Icon(
-            Icons.search,
-            color: AppColors.textSecondary,
-          ),
+          hintStyle: TextStyle(color: AppColors.textSecondary),
+          prefixIcon: Icon(Icons.search, color: AppColors.textSecondary),
           suffixIcon: _isSearching
               ? IconButton(
                   onPressed: () {
                     _searchController.clear();
                   },
-                  icon: Icon(
-                    Icons.clear,
-                    color: AppColors.textSecondary,
-                  ),
+                  icon: Icon(Icons.clear, color: AppColors.textSecondary),
                 )
               : null,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: AppColors.border,
-            ),
+            borderSide: BorderSide(color: AppColors.border),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: AppColors.primary,
-              width: 2,
-            ),
+            borderSide: BorderSide(color: AppColors.primary, width: 2),
           ),
           filled: true,
           fillColor: AppColors.surface,
@@ -272,18 +241,14 @@ String _searchQuery = '';
             vertical: 12,
           ),
         ),
-        style: TextStyle(
-          color: AppColors.textPrimary,
-        ),
+        style: TextStyle(color: AppColors.textPrimary),
       ),
     );
   }
 
   Widget _buildUsersList() {
     if (_isLoading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const Center(child: CircularProgressIndicator());
     }
 
     if (_filteredUsers.isEmpty) {
@@ -307,13 +272,10 @@ String _searchQuery = '';
             ),
             const SizedBox(height: 8),
             Text(
-              _isSearching 
+              _isSearching
                   ? 'Try searching with different keywords'
                   : _getEmptySubMessage(),
-              style: TextStyle(
-                fontSize: 14,
-                color: AppColors.textSecondary,
-              ),
+              style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
               textAlign: TextAlign.center,
             ),
           ],
@@ -335,16 +297,20 @@ String _searchQuery = '';
             onFollowChanged: (isFollowing) {
               setState(() {
                 user['is_following'] = isFollowing;
-                user['followers_count'] = 
+                user['followers_count'] =
                     (user['followers_count'] ?? 0) + (isFollowing ? 1 : -1);
               });
             },
             onTap: () {
               // Navigate to user profile
-              Navigator.pushNamed(
+              Navigator.push(
                 context,
-                '/profile',
-                arguments: {'userId': user['id']},
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen(
+                    userId: user['id'],
+                    initialUserProfile: user,
+                  ),
+                ),
               );
             },
           );
@@ -356,13 +322,15 @@ String _searchQuery = '';
   String _getEmptyMessage() {
     switch (widget.type) {
       case UserListType.followers:
-          return LocalizationService.t('no_trackers_yet');
-        case UserListType.following:
-          return LocalizationService.t('not_tracking_anyone');
+        return LocalizationService.t('no_trackers_yet');
+      case UserListType.following:
+        return LocalizationService.t('not_tracking_anyone');
       case UserListType.likes:
         return 'No likes yet';
       case UserListType.shares:
         return 'No shares yet';
+      case UserListType.suggested:
+        return 'No suggestions available';
     }
   }
 
@@ -376,6 +344,8 @@ String _searchQuery = '';
         return 'When people like this post,\nthey\'ll appear here.';
       case UserListType.shares:
         return 'When people share this post,\nthey\'ll appear here.';
+      case UserListType.suggested:
+        return 'Check back later for more suggestions.';
     }
   }
 }
