@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equal Logo</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .logo-container {
+      width: 200px;
+      height: 200px;
+      border-radius: 30px;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .glow-ring {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle at center, #000 40%, transparent 41%),
+                  conic-gradient(from 0deg, #00f, #80f, #f0f, #00f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: rotate 6s linear infinite;
+    }
+    .inner-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-text {
+      font-family: Arial, sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <div class="glow-ring">
+      <div class="inner-circle">
+        <div class="logo-text">E</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

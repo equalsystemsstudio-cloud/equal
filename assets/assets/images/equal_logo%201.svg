@@ -1,0 +1,47 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#45B7D1;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#96CEB4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFEAA7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#logoGradient)" opacity="0.1"/>
+  
+  <!-- Equal Symbol - Three Horizontal Lines -->
+  <rect x="50" y="70" width="100" height="8" rx="4" fill="url(#logoGradient)" filter="url(#glow)">
+    <animate attributeName="width" values="0;100;100" dur="1.5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <rect x="50" y="96" width="100" height="8" rx="4" fill="url(#logoGradient)" filter="url(#glow)">
+    <animate attributeName="width" values="0;100;100" dur="1.5s" begin="0.3s" repeatCount="indefinite"/>
+  </rect>
+  
+  <rect x="50" y="122" width="100" height="8" rx="4" fill="url(#logoGradient)" filter="url(#glow)">
+    <animate attributeName="width" values="0;100;100" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Sparkle Effects -->
+  <g opacity="0.8">
+    <circle cx="160" cy="60" r="2" fill="#FFD93D">
+      <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="40" cy="140" r="1.5" fill="#6BCF7F">
+      <animate attributeName="opacity" values="0;1;0" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="170" cy="150" r="1" fill="#4ECDC4">
+      <animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="premiumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#4ECDC4;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#45B7D1;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#96CEB4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFEAA7;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="rgba(0,0,0,0.3)"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#premiumGradient)" filter="url(#shadow)"/>
+  
+  <!-- Inner Circle for depth -->
+  <circle cx="256" cy="256" r="200" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  
+  <!-- Letter E -->
+  <g filter="url(#glow)">
+    <path d="M 180 160 L 180 352 L 332 352 L 332 320 L 220 320 L 220 270 L 310 270 L 310 238 L 220 238 L 220 192 L 332 192 L 332 160 Z" 
+          fill="white" 
+          stroke="rgba(255,255,255,0.8)" 
+          stroke-width="2"/>
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="360" cy="180" r="8" fill="rgba(255,255,255,0.6)" filter="url(#glow)"/>
+  <circle cx="380" cy="220" r="6" fill="rgba(255,255,255,0.4)" filter="url(#glow)"/>
+  <circle cx="140" cy="300" r="10" fill="rgba(255,255,255,0.5)" filter="url(#glow)"/>
+  <circle cx="120" cy="340" r="7" fill="rgba(255,255,255,0.3)" filter="url(#glow)"/>
+</svg>
