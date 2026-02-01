@@ -1586,6 +1586,7 @@ class AIService {
   // Dispose resources
   void dispose() {
     _client.close();
+    _isInitialized = false;
   }
 }
 

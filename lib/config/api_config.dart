@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart';
 class ApiConfig {
   // Hugging Face API Configuration
   // Get your free API token from: https://huggingface.co/settings/tokens
-  // This token will be used by ALL users of your app
+  //This token will be used by ALL users of your app
   static String _huggingFaceApiToken = 'hf_YOUR_ACTUAL_TOKEN_HERE';
 
   static String get huggingFaceApiToken => _huggingFaceApiToken;

@@ -549,7 +549,7 @@ class _AIGenerationScreenState extends State<AIGenerationScreen>
     _pulseController.dispose();
     _promptController.dispose();
     _pageController.dispose();
-    _aiService.dispose();
+    // Do not dispose singleton service here
     super.dispose();
   }
 
