@@ -58,9 +58,9 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            // Enable code shrinking/minification and resource shrinking for smaller APK
-            isMinifyEnabled = true
-            isShrinkResources = true
+            // Disable code shrinking/minification and resource shrinking per user request to fix release bugs
+            isMinifyEnabled = false
+            isShrinkResources = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             
             // Use default NDK debug symbol handling (do not force level)

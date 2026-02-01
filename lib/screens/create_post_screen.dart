@@ -91,7 +91,7 @@ class _CreatePostScreenState extends State<CreatePostScreen>
   final bool _showEffects = false; // ignore: unused_field
   final bool _showMusic = false; // ignore: unused_field
   final bool _showDurationOptions = false; // ignore: unused_field
-  int _selectedDuration = 0; // 0: 15s, 1: 30s, 2: 1min, 3: 5min, 4: longer
+  int _selectedDuration = 0; // 0: 15s, 1: 30s
   double _speed = 1.0; // playback/processing speed multiplier
   late AnimationController _pulseController;
   late AnimationController _filterController;
@@ -788,9 +788,6 @@ class _CreatePostScreenState extends State<CreatePostScreen>
   final List<Map<String, dynamic>> _videoDurations = [
     {'name': '15s', 'seconds': 15, 'icon': Icons.timer},
     {'name': '30s', 'seconds': 30, 'icon': Icons.timer},
-    {'name': '1min', 'seconds': 60, 'icon': Icons.schedule},
-    {'name': '5min', 'seconds': 300, 'icon': Icons.schedule},
-    {'name': '12min', 'seconds': 720, 'icon': Icons.schedule},
   ];
 
   // Output resolution options (affects compression before upload)
@@ -2807,8 +2804,9 @@ class _CreatePostScreenState extends State<CreatePostScreen>
                           ),
                         ),
                       ),
-                    // Info label for max duration
-                    if (!_isRecording &&
+                    // Info label for max duration hidden per user request
+                    if (false &&
+                        !_isRecording &&
                         (_countdown == null || _countdown == 0))
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),

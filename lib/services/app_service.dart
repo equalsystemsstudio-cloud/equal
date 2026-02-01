@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import '../config/supabase_config.dart';
+import '../config/api_config.dart';
 import '../utils/auth_test.dart';
 import 'auth_service.dart';
 import 'database_service.dart';
@@ -96,6 +97,22 @@ class AppService {
           );
         } catch (e) {
           debugPrint(('Auth diagnostics failed: $e').toString());
+        }
+      }
+
+      // Load remote configuration (API keys, etc.)
+      try {
+        await ApiConfig.loadRemoteConfig().timeout(
+          const Duration(seconds: 5),
+          onTimeout: () {
+            if (kDebugMode) {
+              debugPrint('Remote config loading timed out');
+            }
+          },
+        );
+      } catch (e) {
+        if (kDebugMode) {
+          debugPrint('Remote config loading failed: $e');
         }
       }
 

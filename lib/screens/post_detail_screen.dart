@@ -168,9 +168,10 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
             : _post.content;
       }
 
+      final shareUrl = 'https://equal-co.com/post/${_post.id}';
       final shareContent = shareText.isNotEmpty
-          ? 'Check out this post by @${_post.username}: "$shareText"\n\nhttps://play.google.com/store/apps/details?id=com.equal.app.equal\n\nDownload Equal app to see more amazing content!'
-          : 'Check out this amazing post by @${_post.username} on Equal!\n\nhttps://play.google.com/store/apps/details?id=com.equal.app.equal\n\nDownload Equal app to see more amazing content!';
+          ? 'Check out this post by @${_post.username}: "$shareText"\n\n$shareUrl\n\nDownload Equal app: https://play.google.com/store/apps/details?id=com.equal.app.equal'
+          : 'Check out this amazing post by @${_post.username} on Equal!\n\n$shareUrl\n\nDownload Equal app: https://play.google.com/store/apps/details?id=com.equal.app.equal';
 
       final messenger = ScaffoldMessenger.of(context);
 

@@ -1258,9 +1258,10 @@ class _DiscoverViewerPageState extends State<_DiscoverViewerPage> {
             ? '${post.content.substring(0, 100)}...'
             : post.content;
       }
+      final shareUrl = 'https://equal-co.com/post/${post.id}';
       final shareContent = shareText.isNotEmpty
-          ? 'Check out this post by @${post.username}: "${shareText}"\n\nhttps://play.google.com/store/apps/details?id=com.equal.app.equal\n\nDownload Equal app to see more amazing content!'
-          : 'Check out this amazing post by @${post.username} on Equal!\n\nhttps://play.google.com/store/apps/details?id=com.equal.app.equal\n\nDownload Equal app to see more amazing content!';
+          ? 'Check out this post by @${post.username}: "${shareText}"\n\n$shareUrl\n\nDownload Equal app: https://play.google.com/store/apps/details?id=com.equal.app.equal'
+          : 'Check out this amazing post by @${post.username} on Equal!\n\n$shareUrl\n\nDownload Equal app: https://play.google.com/store/apps/details?id=com.equal.app.equal';
       await Share.share(
         shareContent,
         subject: 'Amazing post on Equal by @${post.username}',

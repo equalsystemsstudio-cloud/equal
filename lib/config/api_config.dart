@@ -5,11 +5,41 @@
 /// For production, consider using environment variables or secure key management.
 library;
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'supabase_config.dart';
+import 'package:flutter/foundation.dart';
+
 class ApiConfig {
   // Hugging Face API Configuration
   // Get your free API token from: https://huggingface.co/settings/tokens
   // This token will be used by ALL users of your app
-  static const String huggingFaceApiToken = 'hf_YOUR_TOKEN_HERE';
+  static String _huggingFaceApiToken = 'hf_YOUR_ACTUAL_TOKEN_HERE';
+
+  static String get huggingFaceApiToken => _huggingFaceApiToken;
+
+  // Load configuration from Supabase
+  static Future<void> loadRemoteConfig() async {
+    try {
+      // Access client safely - assuming Supabase is initialized
+      final client = Supabase.instance.client;
+      final response = await client
+          .from('app_config')
+          .select('value')
+          .eq('key', 'hugging_face_api_token')
+          .maybeSingle();
+
+      if (response != null && response['value'] != null) {
+        _huggingFaceApiToken = response['value'];
+        if (kDebugMode) {
+          debugPrint('Remote config loaded: hugging_face_api_token updated');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        debugPrint('Error loading remote config: $e');
+      }
+    }
+  }
 
   // Qwen API Configuration (Premium)
   static const String qwenApiKey = 'YOUR_QWEN_API_KEY_HERE';
